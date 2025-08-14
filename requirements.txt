@@ -7,3 +7,4 @@ openpyxl
 plotnine
 pycountry
 adjustText
+scikit-learn
