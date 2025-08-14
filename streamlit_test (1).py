@@ -1,7 +1,7 @@
 import streamlit as st
 
-st.title("My first dashboard")
-st.write("Hello World!")
+st.title("Final Group Project")
+st.write("Names: Anoushka Soni & Sofia Raja")
 
 st.latex(r"Y = \beta_0 + \beta_1X + \varepsilon")
 
