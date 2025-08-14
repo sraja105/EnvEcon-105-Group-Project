@@ -1,2 +1,9 @@
 matplotlib
 plotly
+lets-plot
+streamlit
+pandas
+openpyxl
+plotnine
+pycountry
+adjustText
