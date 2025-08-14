@@ -1001,6 +1001,10 @@ plt.show()
 
 """It’s still a bit difficult to tell which line corresponds to which country. So, let’s add a text label directly to the plot."""
 
+Top10b
+
+"""It’s still a bit difficult to tell which line corresponds to which country. So, let’s add a text label directly to the plot."""
+
 #pip install adjustText
 
 """We need to indicate that our text label will be based on the Country variable.
