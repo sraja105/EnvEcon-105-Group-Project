@@ -7,6 +7,3 @@ openpyxl
 plotnine
 pycountry
 adjustText
-statsmodels
-functools
-sklearn
