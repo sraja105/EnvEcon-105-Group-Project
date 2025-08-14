@@ -7,3 +7,7 @@ openpyxl
 plotnine
 pycountry
 adjustText
+statsmodels.formula.api
+functools
+statsmodels.nonparametric.smoothers_lowess
+sklearn.preprocessing
