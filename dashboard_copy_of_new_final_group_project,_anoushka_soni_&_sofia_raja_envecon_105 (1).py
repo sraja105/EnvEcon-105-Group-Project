@@ -1396,5 +1396,12 @@ else:
 
 bubble_plot
 
+"""**Anoushka & Sofia's Analysis:** This bubble map displays the top 10 CO₂-emitting countries in 2014, with bubble size representing total emissions in metric tons. China is the clear leader, producing approximately 10.3 million metric tons, significantly surpassing all other countries. The United States ranks second with about 5.25 million metric tons, followed by India (2.24 million metric tons) and Russia (1.71 million metric tons). Other major contributors include Japan, Germany, Iran, Saudi Arabia, South Korea, and Canada, each with emissions between roughly 500,000 and 1.3 million metric tons.
+
+The map highlights a concentration of high emissions in Asia, with China, India, Japan, South Korea, and Iran all ranking among the top emitters, reflecting the region’s industrial activity and large populations. North America also shows substantial emissions from the U.S. and Canada, while Europe’s representation comes from Germany and Russia (partially in Europe). Overall, the visualization emphasizes both the scale of China’s emissions compared to other nations and the global distribution of major emitters, underscoring the shared but uneven contributions to global CO₂ output.
+
+China and the United States. China’s emissions, at roughly 10.3 million metric tons, are nearly double those of the United States, which stands at about 5.25 million metric tons. Geographically, this difference reflects China’s rapid industrialization, heavy reliance on coal, and manufacturing-driven economy, compared to the U.S.’s more mature industrial sector and ongoing transition toward cleaner energy sources. While both countries are economic powerhouses with large populations, China’s sheer scale of manufacturing for both domestic use and global export has driven its emissions far beyond the U.S. Despite the U.S. having one of the highest per capita emission rates globally, China’s total output dominates due to its vast industrial base and energy demands. This comparison underscores the challenge of global climate policy, as both nations’ emissions profiles are shaped by different economic structures, energy mixes, and stages of development.
+
+"""
 
 
