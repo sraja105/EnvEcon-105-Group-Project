@@ -12,11 +12,6 @@ Original file is located at
 ### **Final Group Project**
 
 """
-"""### **Name: Anoushka Soni & Sofia Raja**
-### ENVECON 105, Professor Xiangyi Meng
-### August 2nd 2025  
-### **Final Group Project**
-"""
 
 
 """
@@ -33,6 +28,13 @@ from statsmodels.nonparametric.smoothers_lowess import lowess
 from sklearn.preprocessing import StandardScaler
 
 warnings.simplefilter(action='ignore')
+
+"""### **Name: Anoushka Soni & Sofia Raja**
+### ENVECON 105, Professor Xiangyi Meng
+### August 2nd 2025  
+### **Final Group Project**
+"""
+
 
 """###**Selected Country: China**
 
