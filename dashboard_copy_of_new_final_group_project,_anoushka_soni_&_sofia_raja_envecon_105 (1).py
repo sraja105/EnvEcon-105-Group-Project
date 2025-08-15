@@ -1223,3 +1223,11 @@ CO2_disasters_US_scaled
 
 SPACE TO ANSWER THE MAIN RESEARCH QUESTIONS
 """
+
+"""### Extra Credit Part 2: Bubble Plots of Top 10 Emitting Countries (Over Time)
+
+"""
+
+
+
+
