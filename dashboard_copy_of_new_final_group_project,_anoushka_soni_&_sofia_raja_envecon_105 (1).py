@@ -1059,7 +1059,7 @@ CO2_temp_US_scaled
 
 # Extra Credit
 
-## Data Analysis Section for CO2 Emissions and Natural Disasters for China
+### Data Analysis Section for CO2 Emissions and Natural Disasters for China
 
 #### **Calculate the Mean and SD for CO2 emissions and natural disasters for China**
 """
@@ -1224,7 +1224,7 @@ CO2_disasters_US_scaled
 SPACE TO ANSWER THE MAIN RESEARCH QUESTIONS
 """
 
-"""### Extra Credit Part 2: Bubble Plots of Top 10 Emitting Countries (Over Time)
+"""## Extra Credit Part 2: Bubble Plots of Top 10 Emitting Countries (Over Time)
 
 """
 
