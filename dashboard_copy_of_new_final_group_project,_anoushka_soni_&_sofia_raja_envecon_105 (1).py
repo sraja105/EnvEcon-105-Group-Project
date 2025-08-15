@@ -1142,7 +1142,7 @@ CO2_disaster_china_scaled
 
 """SPACE FOR ANALYSIS
 
-## Individual Project: Data Analysis Section for CO2 Emissions and Natural Disasters for the United States
+### Individual Project Insights: Data Analysis Section for CO2 Emissions and Natural Disasters for the United States
 
 Calculate the Mean and SD for CO2 emissions and natural disasters for the United States
 """
