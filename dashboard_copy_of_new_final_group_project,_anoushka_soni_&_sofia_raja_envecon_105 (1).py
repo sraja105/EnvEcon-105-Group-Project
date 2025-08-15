@@ -32,20 +32,15 @@ st.write("Names: Anoushka Soni & Sofia Raja")
 st.write("EnvEcon 105, Professor Xiangyi Meng")
 st.write("August 2nd 2025")
 
-"""### Name: Anoushka Soni & Sofia Raja
-#### ENVECON 105, Professor Xiangyi Meng
-#### August 2nd 2025  
-### Final Group Project
-
-### **Selected Country: China**
+"""### **Selected Country: China**
 
 # Main Research Questions
 
-**1) How has China’s CO2 emissions changed over time? And how  does China compare to other countries (the rest of the world)?**
+#### **1) How has China’s CO2 emissions changed over time? And how  does China compare to other countries (the rest of the world)?**
 
 
 
-**2) Are CO2 emissions, temperature, and natural disasters in China associated?**
+#### **2) Are CO2 emissions, temperature, and natural disasters in China associated?**
 """
 
 # Reading C02 Emissions File
