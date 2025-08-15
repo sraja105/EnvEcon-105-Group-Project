@@ -1228,6 +1228,173 @@ SPACE TO ANSWER THE MAIN RESEARCH QUESTIONS
 
 """
 
+import geopandas as gpd
+
+# -----------------------------
+# Robust world geometry loader for GeoPandas 1.0+
+# -----------------------------
+world = None
+try:
+    # Natural Earth 110m countries (GeoJSON) – reliable public mirror
+    ne_geojson = "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_admin_0_countries.geojson"
+    w = gpd.read_file(ne_geojson)
+
+    # Helper: pick the first existing column from a list of candidates
+    def pickcol(df, candidates):
+        for c in candidates:
+            if c in df.columns:
+                return c
+        raise KeyError(f"None of the candidate columns found: {candidates}")
+
+    # Map various NE field names to a consistent schema
+    name_col = pickcol(w, ["ADMIN", "NAME_LONG", "NAME_EN", "SOVEREIGNT", "NAME", "name"])
+    iso3_col = pickcol(w, ["ADM0_A3", "ISO_A3", "iso_a3", "WB_A3"])
+    cont_col = pickcol(w, ["CONTINENT", "continent"])
+
+    world = w[[name_col, iso3_col, cont_col, "geometry"]].rename(
+        columns={name_col: "ne_name", iso3_col: "iso_a3", cont_col: "continent"}
+    )
+
+    # Some NE rows use -99 or pseudo-codes; drop those for ISO merges
+    world["iso_a3"] = world["iso_a3"].replace({"-99": pd.NA})
+    print("Loaded world geometry from Natural Earth (GitHub GeoJSON).")
+except Exception as e:
+    print(f"Failed to load world geometry: {e}")
+    world = None
+
+# If still no world, stop gracefully
+if world is None:
+    print("Cannot proceed with the bubble map without world geometry data.")
+else:
+    # -----------------------------
+    # Your existing emissions prep & plotting (unchanged)
+    # -----------------------------
+    if not {'Country','Indicator','Year','Value'}.issubset(set(globals().get('data_long', pd.DataFrame()).columns)):
+        print("data_long is missing required columns: Country, Indicator, Year, Value.")
+    else:
+        data_long['Year'] = pd.to_numeric(data_long['Year'], errors='coerce')
+        data_long_cleaned = data_long.dropna(subset=['Year', 'Value', 'Country']).copy()
+
+        # Make the filter tolerant to case/whitespace; adjust keyword if needed
+        emissions_mask = data_long_cleaned['Indicator'].astype(str).str.strip().str.lower().str.contains('emission', na=False)
+        emissions_data = data_long_cleaned[emissions_mask]
+        if emissions_data.empty:
+            print("No emissions data found after cleaning. Cannot create bubble map.")
+        else:
+            latest_year_with_data = emissions_data['Year'].dropna().max()
+            print(f"Latest year with emissions data: {int(latest_year_with_data) if pd.notna(latest_year_with_data) else latest_year_with_data}")
+
+            emissions_latest_year = emissions_data[emissions_data['Year'] == latest_year_with_data].copy()
+            if emissions_latest_year.empty:
+                print(f"No emissions data found for year {latest_year_with_data}. Cannot create bubble map.")
+            else:
+                top_10_latest = emissions_latest_year.nlargest(10, 'Value').copy()
+                if top_10_latest.empty:
+                    print(f"Could not find top 10 emitting countries for {latest_year_with_data}.")
+                else:
+                    print("Top 10 emitting countries in the latest year:")
+                    print(top_10_latest[['Country','Value']].to_string(index=False))
+
+                    # Normalize names for name-join fallback
+                    name_fixes = {
+                        'United States': 'United States of America',
+                        'USA': 'United States of America',
+                        'US': 'United States of America',
+                        'Russian Federation': 'Russia',
+                        'Iran, Islamic Rep.': 'Iran',
+                        'Venezuela, RB': 'Venezuela',
+                        'Viet Nam': 'Vietnam',
+                        'Czech Republic': 'Czechia',
+                        'Korea, Rep.': 'South Korea',
+                        'Korea, South': 'South Korea',
+                        'Korea, Dem. People’s Rep.': 'North Korea',
+                        'Egypt, Arab Rep.': 'Egypt',
+                        'Gambia, The': 'The Gambia',
+                        'Congo, Dem. Rep.': 'Democratic Republic of the Congo',
+                        'Congo, Rep.': 'Republic of the Congo',
+                        'Türkiye': 'Turkey',
+                        'Bahamas, The': 'The Bahamas',
+                        'Yemen, Rep.': 'Yemen',
+                        'Bolivia (Plurinational State of)': 'Bolivia',
+                        'Tanzania, United Republic of': 'Tanzania',
+                        'Brunei Darussalam': 'Brunei',
+                        'Lao PDR': 'Laos',
+                    }
+                    top_10_latest['Country_norm'] = top_10_latest['Country'].replace(name_fixes).str.strip()
+
+                    # Prefer ISO3 merge if column exists and has any non-null values
+                    use_iso = ('iso3' in top_10_latest.columns) and top_10_latest['iso3'].notna().any()
+                    if use_iso:
+                        m = top_10_latest.merge(world, left_on='iso3', right_on='iso_a3', how='left')
+                        missing = m[m['geometry'].isna()].copy()
+                        if not missing.empty:
+                            fallback = (missing
+                                        .drop(columns=[c for c in ['ne_name','iso_a3','continent','geometry'] if c in missing.columns])
+                                        .merge(world, left_on='Country_norm', right_on='ne_name', how='left'))
+                            for col in ['ne_name','iso_a3','continent','geometry']:
+                                if col in m.columns and col in fallback.columns:
+                                    m.loc[missing.index, col] = fallback[col].values
+                    else:
+                        m = top_10_latest.merge(world, left_on='Country_norm', right_on='ne_name', how='left')
+
+                    unmatched = m[m['geometry'].isna()]
+                    if not unmatched.empty:
+                        cols = ['Country'] + (['iso3'] if 'iso3' in unmatched.columns else [])
+                        print("⚠️ Unmatched countries (check names / ISO3):")
+                        print(unmatched[cols].to_string(index=False))
+
+                    gdf_top10 = gpd.GeoDataFrame(m.dropna(subset=['geometry']).copy(), geometry='geometry', crs=world.crs)
+                    if gdf_top10.empty:
+                        print("No countries matched with world map geometry. Cannot create bubble map.")
+                    else:
+                        rep_points = gdf_top10.representative_point()
+                        gdf_top10['x'] = rep_points.x
+                        gdf_top10['y'] = rep_points.y
+
+                        print("Creating bubble map...")
+                        fig, ax = plt.subplots(figsize=(15, 10))
+                        world.plot(ax=ax, color='lightgray', linewidth=0)
+                        world.boundary.plot(ax=ax, linewidth=0.5)
+
+                        max_emissions = gdf_top10['Value'].max()
+                        bubble_sizes = np.where(
+                            (pd.isna(max_emissions) | (max_emissions == 0)),
+                            50.0,
+                            (gdf_top10['Value'] / max_emissions) * 2000.0
+                        )
+
+                        ax.scatter(
+                            gdf_top10['x'], gdf_top10['y'],
+                            s=bubble_sizes,
+                            alpha=0.7,
+                            edgecolors='black',
+                            linewidth=0.8
+                        )
+
+                        for _, row in gdf_top10.iterrows():
+                            ax.text(
+                                row['x'], row['y'],
+                                f"{row['Country']}\n{row['Value']:.0f}",
+                                fontsize=9, ha='center', va='center'
+                            )
+
+                        ax.set_title(f"Top 10 CO₂ Emitting Countries in {int(latest_year_with_data)}", fontsize=16)
+                        ax.set_axis_off()
+
+                        # Legend bubbles (quantiles)
+                        qvals = gdf_top10['Value'].quantile([0.25, 0.5, 0.75]).tolist()
+                        handles = [plt.scatter([], [], s=(q / (max_emissions if max_emissions else 1)) * 2000.0,
+                                               alpha=0.6, edgecolors='black', linewidth=0.8)
+                                   for q in qvals]
+                        labels = [f"{q:,.0f}" for q in qvals]
+                        ax.legend(handles, labels, title="Emissions (metric tons)",
+                                  loc='lower left', bbox_to_anchor=(0, 0), frameon=True)
+
+                        plt.show()
+
+                        bubble_plot = fig
+
+bubble_plot
 
 
 
