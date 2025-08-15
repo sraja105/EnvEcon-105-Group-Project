@@ -149,7 +149,6 @@ china_disaster.head()
 # Grouping by year (regardless of disaster type)
 china_disaster_count = china_disaster.groupby('DisNo.').count()
 china_disaster_count['Disasters'] = china_disaster_count['Disaster Type']
-china_disaster_count
 
 # Resetting the index so 'DisNo.' becomes a column again
 china_disaster_count_reset = china_disaster_count.reset_index()
