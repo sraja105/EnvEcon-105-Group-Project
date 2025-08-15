@@ -631,6 +631,7 @@ wide_china.agg({
 # Calculate the correlation coefficient for emissions and temperature method 2
 r = wide_china['Emissions'].corr(wide_china['Temperature'])
 print(r)
+r
 
 """SPACE FOR ANALYSIS
 <br>
