@@ -25,6 +25,11 @@ from sklearn.preprocessing import StandardScaler
 
 warnings.simplefilter(action='ignore')
 
+import streamlit as st
+
+st.title("Final Group Project")
+st.write("Names: Anoushka Soni & Sofia Raja")
+
 """### Name: Anoushka Soni & Sofia Raja
 #### ENVECON 105, Professor Xiangyi Meng
 #### August 2nd 2025  
