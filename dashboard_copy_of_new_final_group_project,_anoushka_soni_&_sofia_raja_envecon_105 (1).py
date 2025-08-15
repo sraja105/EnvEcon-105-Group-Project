@@ -26,13 +26,13 @@ from sklearn.preprocessing import StandardScaler
 warnings.simplefilter(action='ignore')
 
 """### Name: Anoushka Soni & Sofia Raja
-### ENVECON 105, Professor Xiangyi Meng
-### August 2nd 2025  
+#### ENVECON 105, Professor Xiangyi Meng
+#### August 2nd 2025  
 ### Final Group Project
 
 ### **Selected Country: China**
 
-### Main Research Questions
+# Main Research Questions
 
 **1) How has China’s CO2 emissions changed over time? And how  does China compare to other countries (the rest of the world)?**
 
@@ -220,7 +220,7 @@ data_long.head(6)
 
 """### Group Project: Data Visualization
 
-# How has China's CO2 emissions changed over time?
+# Main Reserch Question: How has China's CO2 emissions changed over time?
 """
 
 # Convert 'Value' to numeric, coercing errors to NaN
@@ -276,7 +276,7 @@ china_emissions_plot_blue
 
 """SPACE FOR ANALYSIS
 
-# Individual Project Insights: How does the United States's CO2 emission changes over time compare to China's?
+## Individual Project Insights: How does the United States's CO2 emission changes over time compare to China's?
 """
 
 # Filter data for emissions only
@@ -535,7 +535,7 @@ china_facet_plot
 
 """SPACE FOR ANALYSIS
 
-# Individual Project Insights: Specifically, how does China compare to the United States?
+## Individual Project Insights: Specifically, how does China compare to the United States?
 """
 
 # Importing GDP Growth File
@@ -665,7 +665,7 @@ US_facet_plot
 
 """SPACE FOR ANALYSIS
 
-# Are CO2 emissions, temperature, and natural disasters in the China associated?
+# Main Reserch Question: Are CO2 emissions, temperature, and natural disasters in the China associated?
 """
 
 # ---- Filter to China, 1980–2014, and the two indicators
@@ -779,7 +779,7 @@ china_temp_vs_emissions
 
 """SPACE FOR ANALYSIS
 
-# Individual Project Insights: Are CO2 emissions, temperature, and natural disasters in the United States associated?
+## Individual Project Insights: Are CO2 emissions, temperature, and natural disasters in the United States associated?
 """
 
 # ---- Filter to United States, 1980–2014, and the two indicators
@@ -978,7 +978,7 @@ CO2_temp_china_scaled
 
 """SPACE FOR ANALYSIS
 
-# Individual Project Insights: Data Analysis
+### Individual Project Insights: Data Analysis
 
 Calculate the Mean and SD for emissions and temperature for the United States
 """
