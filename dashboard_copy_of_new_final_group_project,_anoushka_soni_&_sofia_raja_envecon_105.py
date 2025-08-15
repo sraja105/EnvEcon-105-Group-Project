@@ -12,6 +12,13 @@ Original file is located at
 ### **Final Group Project**
 
 """
+"""### **Name: Anoushka Soni & Sofia Raja**
+### ENVECON 105, Professor Xiangyi Meng
+### August 2nd 2025  
+### **Final Group Project**
+"""
+
+
 """
 
 #Importing relevant libraries
