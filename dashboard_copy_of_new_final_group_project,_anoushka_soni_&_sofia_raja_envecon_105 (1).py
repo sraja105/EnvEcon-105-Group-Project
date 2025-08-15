@@ -314,7 +314,7 @@ US_emissions_plot_blue
 
 """SPACE FOR ANALYSIS
 
-# How does China compare to other countries (the rest of the world), in terms of CO2 emissions?
+# Main Reserch Question: How does China compare to other countries (the rest of the world), in terms of CO2 emissions?
 """
 
 emissions_2014 = data_long[(data_long['Indicator'] == 'Emissions') & (data_long['Year'] == 2014)].copy()
