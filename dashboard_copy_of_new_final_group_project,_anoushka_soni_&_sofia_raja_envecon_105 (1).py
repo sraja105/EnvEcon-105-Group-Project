@@ -28,6 +28,19 @@ st.write("Names: Anoushka Soni & Sofia Raja")
 st.write("EnvEcon 105, Professor Xiangyi Meng")
 st.write("August 2nd 2025")
 
+
+genre = st.radio(
+     "What's your favourite movie genre",
+     ('Comedy', 'Drama', 'Documentary'))
+if genre == (answer := 'Comedy'):
+    st.write(f'You selected {answer}.')
+elif genre == (answer := 'Drama'):
+    st.write(f'You selected {answer}.')
+else:
+    st.write("You didn't select comedy or drama.")
+
+
+
 """### **Selected Country: China**
 
 # Main Research Questions
