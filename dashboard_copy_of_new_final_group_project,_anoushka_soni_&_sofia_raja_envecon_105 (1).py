@@ -27,8 +27,10 @@ warnings.simplefilter(action='ignore')
 
 import streamlit as st
 
-st.title("Final Group Project")
+st.title("Final Group Project Dashboard")
 st.write("Names: Anoushka Soni & Sofia Raja")
+st.write("EnvEcon 105, Professor Xiangyi Meng")
+st.write("August 2nd 2025")
 
 """### Name: Anoushka Soni & Sofia Raja
 #### ENVECON 105, Professor Xiangyi Meng
