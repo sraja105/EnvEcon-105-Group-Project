@@ -1001,6 +1001,8 @@ Calculate the correlation coefficient for emissions and temperature
 US_r_temp = wide_US['Emissions'].corr(wide_US['Temperature'])
 print(US_r_temp)
 
+US_r_temp
+
 """**Anoushka & Sofia's Analysis**: The calculated correlation coefficient for emissions and temperature is 0.4711717061539188 <BR>
 A correlation coefficient of r = 0.4711717061539188 means that, in general, as emissions increase, temperatures also tend to rise, and vice versa, but the relationship is not strong enough to be perfectly predictive. Other factors—such as global emissions, natural climate variability, and regional climate patterns—also play important roles in temperature changes. In practical terms, a 0.47 correlation suggests that emissions are meaningfully related to temperature but are only one part of a more complex system influencing climate trends.
 
@@ -1016,6 +1018,8 @@ r, US_p_value_temp = pearsonr(wide_US['Emissions'], wide_US['Temperature'])
 
 print(f"Pearson correlation: {r}")
 print(f"P-value: {US_p_value_temp}")
+
+US_p_value_temp
 
 """**Anoushka & Sofia's Analysis:** We see that the correlation coefficient quantifying the strength of the linear relationship between C02 emissions and temperature is statistically significant since the p-value is 0.004277392732182289. Since the p-value is much smaller than the 0.05 significance level, it's considered statistically significant. This small p-value indicates strong evidence against the null hypothesis so there's a very low probability of observing this result if there were truly no effect. Therefore, the null hypothesis would be rejected in favor of the alternative hypothesis, which suggests that the observed effect of emissions and temperature having a positive relationship is likely real and not due to random chance."""
 
