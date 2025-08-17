@@ -1201,6 +1201,8 @@ r, US_p_value_disasters = pearsonr(wide_US['Emissions'], wide_US['Disasters'])
 print(f"Pearson correlation: {r}")
 print(f"P-value: {US_p_value_disasters}")
 
+US_p_value_disasters
+
 """**Anoushka & Sofia's Analysis:** We see that the correlation coefficient quantifying the strength of the linear relationship between C02 emissions and the number of disasters is statistically significant since the p-value is 0.027403701857556008. Since the p-value is smaller than the 0.05 significance level, it's considered statistically significant. This small p-value indicates strong evidence against the null hypothesis so there's a very low probability of observing this result if there were truly no effect. Therefore, the null hypothesis would be rejected in favor of the alternative hypothesis, which suggests that the observed effect of emissions and disasters having a positive relationship is likely real and not due to random chance."""
 
 import statsmodels.api as sm
