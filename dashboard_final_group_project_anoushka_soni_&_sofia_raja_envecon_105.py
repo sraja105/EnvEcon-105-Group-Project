@@ -1442,11 +1442,11 @@ These four charts together illustrate the trends and relationship between CO₂ 
 
 
 # Answering the Main Research Questions
-**1) How has China’s CO2 emissions changed over time? And how does China compare to other countries (the rest of the world)?** <br>
+**1) How has China’s CO2 emissions changed over time? And how does China compare to other countries (the rest of the world)?** 
 
 China CO2 emissions have risen sharply after the 20th century and particularly in the 2000s, there has been an immense shot up. However, since the 1980s, China's emissions have surged which makes it one of the world's largests emitters today. Comparing this to the United States, China has even surpassed the United States in CO2 emissions. Comparing this to other countries, such as the US and parts of Europe, which have seen slower growth in CO2 emissions or even declines.
 
-**2) Are CO2 emissions, temperature, and natural disasters in China associated?** <br>
+**2) Are CO2 emissions, temperature, and natural disasters in China associated?** 
 
 In China, rising CO2 emissions correlate with a general increase in average yearly temperatures. This reflects the trend of green house gas driven warming. In particular, we got an r value of 0.5 which demonstrates a positive and correlated relationship between CO2 emissions and temperature in China. As we calculated previously, in our extra credit section, there is an association with CO2 emissions and the frequency of natural disasters as CO2 emission related climate change intensifies extreme weather conditions resulting in natural disasters. In particular, we got an r value of 0.7 which demonstrates a positive and highly correlated relationship between CO2 emissions and disasters in China.
 """
