@@ -1003,7 +1003,7 @@ print(US_r_temp)
 
 US_r_temp
 
-"""**Anoushka & Sofia's Analysis**: The calculated correlation coefficient for emissions and temperature is 0.4711717061539188 <BR>
+"""**Anoushka & Sofia's Analysis**: The calculated correlation coefficient for emissions and temperature is 0.4711717061539188
 A correlation coefficient of r = 0.4711717061539188 means that, in general, as emissions increase, temperatures also tend to rise, and vice versa, but the relationship is not strong enough to be perfectly predictive. Other factors—such as global emissions, natural climate variability, and regional climate patterns—also play important roles in temperature changes. In practical terms, a 0.47 correlation suggests that emissions are meaningfully related to temperature but are only one part of a more complex system influencing climate trends.
 
 When comparing this United States data with that of China, we can see that China has a larger correlation coefficient than the United States since 0.5469881167100109 is greater than 0.4711717061539188. This suggests that emissions and temperature in China are more closely related than in the United States.
